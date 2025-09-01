@@ -50,6 +50,25 @@ fun VersionCatalogBuilder.modrinth(
 ) {
     val allLoaders = mapping.flatMap { it.loaders.keys }.toSet()
     val isSingleLoader = allLoaders.size == 1
+    val isSingleMcVersion = mcVersionToVersion.size == 1
+
+    if (isSingleMcVersion) {
+        val (mcVersion, modVersion) = mcVersionToVersion.entries.single()
+        val config = mapping.find { it.mcVersion == mcVersion }
+            ?: error("No loader config found for MC $mcVersion")
+
+        val version = versionFormat(mcVersion, modVersion)
+
+        config.loaders.forEach { (loaderName, loader) ->
+            library(
+                if (isSingleLoader) "$id"
+                else "${id}_$loaderName",
+                "maven.modrinth",
+                loader.artifactTransformer(artifact, loaderName, mcVersion)
+            ).version(loader.versionTransformer(version, loaderName))
+        }
+        return
+    }
 
     mcVersionToVersion.forEach { (mcVersion, modVersion) ->
         val config = mapping.find { it.mcVersion == mcVersion }
@@ -78,6 +97,25 @@ fun VersionCatalogBuilder.maven(
 ) {
     val allLoaders = mapping.flatMap { it.loaders.keys }.toSet()
     val isSingleLoader = allLoaders.size == 1
+    val isSingleMcVersion = mcVersionToVersion.size == 1
+
+    if (isSingleMcVersion) {
+        val (mcVersion, modVersion) = mcVersionToVersion.entries.single()
+        val config = mapping.find { it.mcVersion == mcVersion }
+            ?: error("No loader config found for MC $mcVersion")
+
+        val version = versionFormat(mcVersion, modVersion)
+
+        config.loaders.forEach { (loaderName, loader) ->
+            library(
+                if (isSingleLoader) id
+                else "${id}_$loaderName",
+                group,
+                loader.artifactTransformer(artifact, loaderName, mcVersion)
+            ).version(loader.versionTransformer(version, loaderName))
+        }
+        return
+    }
 
     mcVersionToVersion.forEach { (mcVersion, baseVersion) ->
         val config = mapping.find { it.mcVersion == mcVersion }
@@ -170,6 +208,6 @@ dependencyResolutionManagement.versionCatalogs.create("catalog") {
 }
 
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version "0.8.0"
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 rootProject.name = "CalypsosMobs"

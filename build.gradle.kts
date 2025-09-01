@@ -25,7 +25,7 @@ plugins {
 
     id("com.gradleup.shadow") version "9.0.2"
 
-    id("earth.terrarium.cloche") version "0.12.2-dust"
+    id("earth.terrarium.cloche") version "0.13.4-dust"
 }
 
 val archive_name: String by rootProject.properties
@@ -258,12 +258,12 @@ cloche {
             metadata {
                 entrypoint("main") {
                     adapter = "kotlin"
-                    value = "settingdust.calypsos_mobs.fabric.Entrypoint::init"
+                    value = "$group.fabric.Entrypoint::init"
                 }
 
                 entrypoint("client") {
                     adapter = "kotlin"
-                    value = "settingdust.calypsos_mobs.fabric.Entrypoint::clientInit"
+                    value = "$group.fabric.Entrypoint::clientInit"
                 }
 
                 dependency {
@@ -425,16 +425,16 @@ cloche {
     }
 }
 
-val SourceSet.jarInJarTaskName: String
-    get() = lowerCamelCaseGradleName(takeUnless(SourceSet::isMain)?.name, "jarInJar")
+val SourceSet.mergedIncludeJarTaskName: String
+    get() = lowerCamelCaseGradleName(takeUnless(SourceSet::isMain)?.name, "mergeIncludeJar")
 
-val SourceSet.jarJarTaskName: String
-    get() = lowerCamelCaseGradleName(takeUnless(SourceSet::isMain)?.name, "jarJar")
+val SourceSet.includeJarTaskName: String
+    get() = lowerCamelCaseGradleName(takeUnless(SourceSet::isMain)?.name, "includeJar")
 
 val MinecraftTarget.includeJarTaskName: String
     get() = when (this) {
-        is FabricTarget -> sourceSet.jarInJarTaskName
-        is ForgeLikeTarget -> sourceSet.jarJarTaskName
+        is FabricTarget -> sourceSet.includeJarTaskName
+        is ForgeLikeTarget -> sourceSet.includeJarTaskName
         else -> throw IllegalArgumentException("Unsupported target $this")
     }
 
@@ -490,7 +490,7 @@ tasks {
         configurations.empty()
 
         for (target in cloche.targets.filter { it.isContainer() }) {
-            from(target.finalJar.map { zipTree(it) })
+            from(target.finalJar.map { zipTree(it.archiveFile) })
             manifest.inheritFrom(getByName<Jar>(target.includeJarTaskName).manifest)
         }
 
