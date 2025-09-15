@@ -4,10 +4,11 @@ import net.minecraft.core.registries.BuiltInRegistries
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.world.entity.EntityType
 import settingdust.calypsos_mobs.entity.FurnaceSprite
+import settingdust.calypsos_mobs.util.ServiceLoaderUtil
 
 @Suppress("UNCHECKED_CAST")
 interface CalypsosMobsEntities {
-    companion object : CalypsosMobsEntities{
+    companion object : CalypsosMobsEntities {
         val FURNACE_SPRITE by lazy { BuiltInRegistries.ENTITY_TYPE.get(CalypsosMobsKeys.FURNACE_SPRITE) as EntityType<FurnaceSprite> }
 
         private val implementations = ServiceLoaderUtil.findServices<CalypsosMobsEntities>()

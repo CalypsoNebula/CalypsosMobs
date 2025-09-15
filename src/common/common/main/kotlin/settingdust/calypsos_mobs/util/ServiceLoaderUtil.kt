@@ -1,4 +1,4 @@
-package settingdust.calypsos_mobs
+package settingdust.calypsos_mobs.util
 
 import org.apache.logging.log4j.Logger
 import java.util.*

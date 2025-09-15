@@ -1,6 +1,6 @@
 package settingdust.calypsos_mobs.adapter
 
-import settingdust.calypsos_mobs.ServiceLoaderUtil
+import settingdust.calypsos_mobs.util.ServiceLoaderUtil
 
 interface Entrypoint {
     companion object : Entrypoint {

@@ -11,7 +11,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier
 import net.minecraft.world.item.CreativeModeTab
 import net.minecraft.world.item.Item
 import net.minecraft.world.item.ItemStack
-import settingdust.calypsos_mobs.ServiceLoaderUtil
+import settingdust.calypsos_mobs.util.ServiceLoaderUtil
 
 interface LoaderAdapter {
     companion object : LoaderAdapter by ServiceLoaderUtil.findService()

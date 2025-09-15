@@ -29,13 +29,13 @@ class LoaderAdapter : LoaderAdapter {
     override fun ItemStack.getBurnTime() = ForgeHooks.getBurnTime(this, null)
 
     override fun <T : Entity> T.onCreatedInLevel(callback: () -> Unit) {
-        MinecraftForge.EVENT_BUS.addListener { event: EntityJoinLevelEvent ->
+        MinecraftForge.EVENT_BUS.addListener<EntityJoinLevelEvent> { event ->
             if (event.entity == this) callback()
         }
     }
 
     override fun <T : LivingEntity> EntityType<T>.defaultAttributes(supplier: AttributeSupplier) {
-        MOD_BUS.addListener { event: EntityAttributeCreationEvent ->
+        MOD_BUS.addListener<EntityAttributeCreationEvent> { event ->
             event.put(this, supplier)
         }
     }
@@ -47,7 +47,7 @@ class LoaderAdapter : LoaderAdapter {
     }
 
     override fun <T : Item> T.creativeTab(key: ResourceKey<CreativeModeTab>) {
-        MOD_BUS.addListener { event: BuildCreativeModeTabContentsEvent ->
+        MOD_BUS.addListener<BuildCreativeModeTabContentsEvent> { event ->
             if (event.tabKey == key) event.accept(this)
         }
     }
