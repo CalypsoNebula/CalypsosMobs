@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.2] - 2025-10-07
+### :bug: Bug Fixes
+- [`411e1d4`](https://github.com/CalypsoNebula/CalypsosMobs/commit/411e1d4a8109377edec91c068d20adc3cc394d64) - correct the recipe & loot table path on 1.21 *(commit by [@SettingDust](https://github.com/SettingDust))*
+
+### :wrench: Chores
+- [`eb4cd8d`](https://github.com/CalypsoNebula/CalypsosMobs/commit/eb4cd8d49aa8819f8a5972fc991ed37cd3aa4781) - move the `ServiceLoaderUtil` *(commit by [@SettingDust](https://github.com/SettingDust))*
+
+
 ## [0.2.1] - 2025-08-19
 ### :bug: Bug Fixes
 - [`f469c24`](https://github.com/SettingDust/CalypsosMobs/commit/f469c242d12ad1f5373542e4f5352922e13813f5) - fabric jar manifest is wrong *(commit by [@SettingDust](https://github.com/SettingDust))*
@@ -82,3 +90,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.1.1]: https://github.com/SettingDust/CalypsosMobs/compare/0.1.0...0.1.1
 [0.2.0]: https://github.com/SettingDust/CalypsosMobs/compare/0.1.1...0.2.0
 [0.2.1]: https://github.com/SettingDust/CalypsosMobs/compare/0.2.0...0.2.1
+[0.2.2]: https://github.com/CalypsoNebula/CalypsosMobs/compare/0.2.1...0.2.2
