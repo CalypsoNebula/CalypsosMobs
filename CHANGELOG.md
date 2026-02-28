@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.3] - 2026-02-28
+### :bug: Bug Fixes
+- [`ae3da5d`](https://github.com/CalypsoNebula/CalypsosMobs/commit/ae3da5d84ef4948edb8321c2d5e389d067f8cdd2) - crash on server *(commit by [@SettingDust](https://github.com/SettingDust))*
+
+
 ## [0.2.2] - 2025-10-07
 ### :bug: Bug Fixes
 - [`411e1d4`](https://github.com/CalypsoNebula/CalypsosMobs/commit/411e1d4a8109377edec91c068d20adc3cc394d64) - correct the recipe & loot table path on 1.21 *(commit by [@SettingDust](https://github.com/SettingDust))*
@@ -91,3 +96,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 [0.2.0]: https://github.com/SettingDust/CalypsosMobs/compare/0.1.1...0.2.0
 [0.2.1]: https://github.com/SettingDust/CalypsosMobs/compare/0.2.0...0.2.1
 [0.2.2]: https://github.com/CalypsoNebula/CalypsosMobs/compare/0.2.1...0.2.2
+[0.2.3]: https://github.com/CalypsoNebula/CalypsosMobs/compare/0.2.2...0.2.3
