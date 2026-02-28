@@ -7,6 +7,7 @@ import net.minecraft.world.entity.PathfinderMob
 import net.minecraft.world.entity.ai.attributes.Attributes
 import settingdust.calypsos_mobs.CalypsosMobsEntities
 import settingdust.calypsos_mobs.CalypsosMobsKeys
+import settingdust.calypsos_mobs.adapter.LoaderAdapter
 import settingdust.calypsos_mobs.adapter.LoaderAdapter.Companion.defaultAttributes
 import settingdust.calypsos_mobs.adapter.LoaderAdapter.Companion.rendererProvider
 import settingdust.calypsos_mobs.v1_20.client.entity.FurnaceSpriteRenderer
@@ -28,7 +29,7 @@ class CalypsosMobsEntities : CalypsosMobsEntities {
                             .build()
                     )
 
-                    rendererProvider(::FurnaceSpriteRenderer)
+                    if (LoaderAdapter.isClient) rendererProvider(::FurnaceSpriteRenderer)
                 }
         )
     }
